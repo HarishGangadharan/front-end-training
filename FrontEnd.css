@@ -403,10 +403,22 @@ h4 {
   }
   
 
+  @media only screen and (min-width: 1024px) and (max-width: 1382px)    {
 
+	.cards-content .card {
+		width: 26%;
+        
+	}
+	.middle-spacing {
+width: 27%;
+	}
+  }
 
 
 @media only screen and (min-width: 426px)  and (max-width: 768px)  {
+
+
+
 	.cards-content .card {
 		width: 34%;
         margin-top: 9%;
@@ -453,10 +465,15 @@ margin-left: 5%;
 
 }
 
+@media only screen and (max-width: 1024)  {
 
+
+
+
+
+}
 
 @media only screen and (max-width: 425px)  {
-
 
 	.content .right-spacing {
 		margin-bottom: 5%;
