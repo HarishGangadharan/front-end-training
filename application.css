@@ -1,0 +1,199 @@
+.total-content .top-bar {
+  background-color: #1879D2;
+  width: auto;
+  height: 7.5vh;
+}
+.total-content .top-bar .top-bar-label {
+  display: inline;
+  margin-left: 10px;
+  font-family: halyard-display, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  color: white;
+}
+.total-content .top-bar .search-bar {
+  display: inline-block;
+  margin-left: 33%;
+  height: 4vh;
+  background-color: #b8d1f4;
+  margin-top: 9px;
+  padding-bottom: 8px;
+  width: 30%;
+  border-radius: 4px;
+}
+.total-content .top-bar .search-bar button {
+  background-color: transparent;
+  color: #5778b8;
+  display: inline-block;
+  border: 0px;
+  margin-top: 4px;
+  font-size: 20px;
+  padding-left: 13px;
+}
+.total-content .top-bar .search-bar i {
+  transform: scaleX(-1);
+}
+.total-content .top-bar .search-bar input {
+  background-color: transparent;
+  display: inline-block;
+  background-color: #b8d1f4;
+  border: 0px;
+  padding-left: 15px;
+}
+.total-content .middle-content {
+  display: inline-flex;
+  width: 100%;
+}
+.total-content .middle-content .side-nav-bar {
+  display: inline-block;
+  background-color: #F4f4f4;
+  width: 21%;
+  height: 89.5vh;
+}
+.total-content .middle-content .side-nav-bar .topnav {
+  background-color: #ffffff;
+  display: inline;
+}
+.total-content .middle-content .side-nav-bar .topnav .icons .opacity {
+  opacity: 0.5;
+}
+.total-content .middle-content .side-nav-bar .topnav .icons a {
+  text-align: center;
+  color: #848888;
+  padding: 0px 0px;
+}
+.total-content .middle-content .side-nav-bar .topnav .icons .label-planned {
+  margin-left: 11px;
+}
+.total-content .middle-content .side-nav-bar .topnav .icons .label-my-list {
+  color: #6C70A9;
+  font-weight: 600;
+  margin-left: 4%;
+}
+.total-content .middle-content .side-nav-bar .topnav .icons .icon-my-list {
+  color: #6C70A9;
+}
+.total-content .middle-content .side-nav-bar .topnav .icons .align {
+  margin-left: 4%;
+}
+.total-content .middle-content .side-nav-bar .topnav .icons .icons-size {
+  width: 18px;
+  height: 18px;
+}
+.total-content .middle-content .side-nav-bar .topnav .icons .list-icon {
+  margin-top: 5%;
+}
+.total-content .middle-content .side-nav-bar .topnav ul {
+  padding-left: 0px;
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+.total-content .middle-content .side-nav-bar .topnav li {
+  list-style-type: none;
+  cursor: pointer;
+  padding: 12px 12px;
+  border-left: 2px solid #ffffff;
+}
+.total-content .middle-content .side-nav-bar .topnav a {
+  color: white;
+  padding: 9px 9px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.total-content .middle-content .side-nav-bar .topnav li:hover {
+  border-left: 2px solid gray;
+  background-color: #ececec;
+}
+.total-content .middle-content .main-content {
+  width: 77%;
+  display: inline-block;
+  height: 89.5vh;
+  background-color: white;
+}
+.total-content .middle-content .main-content .my-list-elements {
+  display: inline-block;
+  width: 100%;
+}
+.total-content .middle-content .main-content .my-list-elements .more-icon {
+  font-size: 15px;
+  margin-left: 8%;
+}
+.total-content .middle-content .main-content .my-list-elements .sort-icon {
+  float: right;
+  margin-right: 3%;
+}
+.total-content .middle-content .main-content .my-list-elements .sort-icon .rotate {
+  transform: rotate(90deg);
+  color: #5a88e2;
+}
+.total-content .middle-content .main-content .my-list-elements .sort-icon h4 {
+  display: inline-block;
+  color: #5a88e2;
+}
+.total-content .middle-content .main-content .my-list-elements h2 {
+  width: 15%;
+  font-family: halyard-display, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  margin-left: 3%;
+  color: #5a88e2;
+  display: inline-block;
+}
+.total-content .middle-content .main-content .task-content {
+  margin-left: 3%;
+  margin-top: 2%;
+}
+.total-content .middle-content .main-content .task-content .color {
+  color: #87aefb;
+  font-size: 24px;
+}
+.total-content .middle-content .main-content .task-content .starred {
+  float: right;
+  margin-right: 3%;
+  color: gray;
+}
+.total-content .middle-content .main-content .add-task {
+  display: inline-block;
+  margin-left: 3%;
+  width: 100%;
+  margin-top: 2%;
+}
+.total-content .middle-content .main-content .add-task P {
+  color: #7795d1;
+}
+.total-content .middle-content .main-content .line {
+  width: 94%;
+  background-color: #eaeaea;
+  height: 2px;
+  margin-left: 3%;
+  margin-top: 5%;
+}
+.total-content .middle-content .main-content .first-line-m-t {
+  margin-top: 1%;
+}
+
+::placeholder {
+  color: #5a88e2;
+  font-family: brandon-grotesque, sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+p {
+  color: #423b3b;
+  display: inline;
+  margin-left: 3%;
+  font-family: halyard-display, sans-serif;
+  font-style: normal;
+  font-weight: 200;
+}
+
+.hello {
+  font-family: brandon-grotesque, sans-serif;
+  font-style: normal;
+  font-weight: 300;
+}
+
+/*# sourceMappingURL=application.css.map */
