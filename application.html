@@ -10,7 +10,7 @@
             <p class="top-bar-label">
                To-Do
             </p>
-            <div class="search-bar">
+            <div class="search-bar" title="Search">
                <button type="submit">
                <i class="fa fa-search"></i>
                </button>
@@ -28,42 +28,42 @@
                         <a>
                            <img src="sun" class="opacity icons-size">
                             
-                           <p>My Day </p>
+                           <p class="content-data">My Day </p>
                         </a>
                      </li>
                      <li>
                         <a>
                            <img src="star" class="opacity icons-size">
                            
-                           <p>Important</p>
+                           <p  class="content-data">Important</p>
                         </a>
                      </li>
                      <li>
                         <a>
                            <i class="fa fa-calendar icons-size"></i>
                            
-                           <p class="label-planned">Planned </p>
+                           <p class="label-planned content-data">Planned </p>
                         </a>
                      </li>
                      <li>
                         <a>
                            <img src="house"class="opacity icons-size">
                           
-                           <p>Tasks </p>
+                           <p  class="content-data">Tasks </p>
                         </a>
                      </li>
                      <li class="list-icon">
                         <a>
                            <i class=" fa fa-list-ul icon-my-list icons-size"></i>
                           
-                           <p class="label-my-list">My List </p>
+                           <p class="label-my-list content-data">My List </p>
                         </a>
                      </li>
                      <li >
                         <a>
                            <img src="plus"class="opacity icon-my-list icons-size">
                             
-                           <p class="label-my-list align" >New List </p>
+                           <p class="label-my-list align content-data" >New List </p>
                         </a>
                      </li>
                   </ul>
@@ -84,29 +84,181 @@
                <div class="task-content">
                   <a>
                      <i class="fa fa-circle-o color"></i>
-                     <p >Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                     <p class="message">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                      <i class="fa fa-star-o starred"></i>
                   </a>
                </div>
                <div class="line first-line-m-t"></div>
                <div class="add-task">
                   <a>
-                     <img src="plus"class="opacity ">
+                     <img src="plus"class="opacity " title="Add a task">
                      <p >Add a task </p>
                   </a>
+
+                 
+
                </div>
+
+               <div class="task-content display-none">
+                    <a>
+                       <i class="fa fa-circle-o color"></i>
+
+<input type="text" placeholder="Add a task" >
+
+<button class="starred change-color">ADD</button>
+
+</a>
+                 </div>
+
                <div class="line first-line-m-t"></div>
                <div class="line"></div>
                <div class="line"></div>
                <div class="line"></div>
-               <div class="line"></div>
-               <div class="line"></div>
+             
                <div class="line"></div>
                <div class="line"></div>
             </div>
 
 
-            <div class="hello">
+            <div class="right-nav-bar">
+
+
+                <div class="right-content-1">
+<div class="select-icon">
+        <a>
+                <i class="fa fa-circle-o color"></i> </a>
+
+</div>
+<div class="content">
+        <h4 >Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
+
+</div>
+<div class="important">
+<a>    <i class="fa fa-star-o starred"></i>
+    <i class="far fa-trash-alt"></i>
+</a></div>
+                      
+                            
+
+                </div>
+
+
+                <div class="my-day-content">
+
+
+                    <div class="icon">
+
+                            <img src="sun" class="adjust-margin">
+
+                    </div>
+                       
+                          <div class="day-content">
+                                <h4>Add to My Day </h4>
+
+                          </div>      
+                                 
+                                
+                            
+
+                    
+                </div>
+
+
+                <div class="my-day-content adjust-height">
+<div class="first-content">
+
+
+        <div class="icon">
+
+                <img src="alar.png" class="adjust-margin">
+        </div>
+
+        <div class="remind-content">
+                <h4>Remind me </h4>
+
+          </div>    
+
+</div>
+
+<div class="first-content">
+
+
+        <div class="icon">
+
+                <i class="fa fa-calendar adjust-margin"></i>
+        </div>
+
+        <div class="remind-content">
+                <h4>Add due date</h4>
+
+          </div>    
+
+</div>
+       
+
+<div class="first-content">
+
+
+        <div class="icon">
+
+                <img src="calendar.png" class="adjust-margin">
+        </div>
+
+        <div class="remind-content">
+                <h4 class="align-top">Repeat</h4>
+
+          </div>    
+
+</div>
+       
+                      
+                      
+
+                    
+                    </div>
+    
+
+                    <div class="my-day-content textarea-height">
+                            <textarea rows="4" cols="50" placeholder="Add a note"></textarea>
+
+                    
+                        </div>
+
+                        <div class="footer-content">
+
+
+
+              
+
+
+
+
+
+                    <div class="next-icon">
+                        <a>
+                                <i class="fa fa-arrow-right adjust-left" title="Hide details view"></i>
+
+                        </a>
+                           
+
+
+                    </div>
+
+                    <div class="created-today">
+                        <p class="adjust-font-size">Created Today</p>
+
+                    </div>
+
+
+
+                    <div class="delete-icon" title="delete task">
+                            <a>   
+                                <i class="fa fa-trash color-change"></i>
+                            </a></div>
+
+
+                        </div>
+        
 
 
 
@@ -119,4 +271,68 @@
       </div>
       </div>
    </body>
+
+
+
+
+
+   <script>
+
+document.getElementsByClassName("message")[0].addEventListener("click", openRightContent);
+document.getElementsByClassName("next-icon")[0].addEventListener("click", closeRightContent);
+document.getElementsByClassName("add-task")[0].addEventListener("click", addTask);
+document.getElementsByClassName("fa fa-bars")[0].addEventListener("click", manageSideNav);
+
+
+
+   function manageSideNav() {
+   
+       
+    
+ 
+  var x = document.getElementsByClassName("side-nav-bar")[0];
+
+
+  if (x.style.width == "21%") {
+         
+    document.getElementsByClassName("side-nav-bar")[0].style.width = "4%";
+  document.getElementsByClassName("main-content")[0].style.width = "96%";
+  for (index = 0; index < 6; index++) {
+
+document.getElementsByClassName("content-data")[index].style.display = 'none';
+}
+   } else {
+
+for (index = 0; index < 6; index++) {
+
+document.getElementsByClassName("content-data")[index].style.display = 'inline';
+}
+
+   x.style.width = "21%";
+ }
+
+
+}
+
+
+   function openRightContent() {
+    document.getElementsByClassName("right-nav-bar")[0].style.display = 'block';
+    
+}
+
+  function closeRightContent() {
+    document.getElementsByClassName("right-nav-bar")[0].style.display = 'none';
+}
+
+function addTask() {
+
+        document.getElementsByClassName("add-task")[0].style.display = 'none';
+        document.getElementsByClassName("task-content")[1].style.display = 'block';
+
+
+}
+   
+   
+   
+   </script>
 </html>
