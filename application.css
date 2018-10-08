@@ -127,6 +127,9 @@ body .total-content .middle-content .main-content {
   height: 89.5vh;
   background-color: white;
 }
+body .total-content .middle-content .main-content .make-content-none {
+  display: none;
+}
 body .total-content .middle-content .main-content .display-none {
   display: none;
 }
@@ -162,9 +165,12 @@ body .total-content .middle-content .main-content .my-list-elements h2 {
 body .total-content .middle-content .main-content .task-content {
   cursor: pointer;
   margin-left: 3%;
-  margin-top: 2%;
+  border-bottom: 1px solid #e6e3e3;
+  padding: 20px 10px;
+  width: 94%;
 }
 body .total-content .middle-content .main-content .task-content input {
+  width: 50%;
   outline: none;
   border: none;
   margin-left: 3%;
@@ -193,8 +199,9 @@ body .total-content .middle-content .main-content .task-content .change-color {
 body .total-content .middle-content .main-content .add-task {
   display: inline-block;
   margin-left: 3%;
-  width: 100%;
-  margin-top: 2%;
+  width: 94%;
+  border-bottom: 1px solid #e6e3e3;
+  padding: 20px 10px;
   cursor: pointer;
 }
 body .total-content .middle-content .main-content .add-task P {
@@ -344,6 +351,7 @@ body .total-content .middle-content .right-nav-bar .right-content-1 .select-icon
   margin-top: 35%;
 }
 body .total-content .middle-content .right-nav-bar .right-content-1 .content {
+  margin-top: 5%;
   width: 65%;
 }
 body .total-content .middle-content .right-nav-bar .right-content-1 .content h4 {

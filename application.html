@@ -81,14 +81,18 @@
                      <h4>Sort</h4>
                   </a>
                </div>
-               <div class="task-content">
-                  <a>
+               <div class="task-content make-content-none "  >
+                  
                      <i class="fa fa-circle-o color"></i>
                      <p class="message">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                      <i class="fa fa-star-o starred"></i>
-                  </a>
+                  
                </div>
-               <div class="line first-line-m-t"></div>
+
+          
+<div class="new-content">
+
+</div>
                <div class="add-task">
                   <a>
                      <img src="plus"class="opacity " title="Add a task">
@@ -103,20 +107,14 @@
                     <a>
                        <i class="fa fa-circle-o color"></i>
 
-<input type="text" placeholder="Add a task" >
+<input type="text" placeholder="Add a task" class="input-type" autofocus >
 
-<button class="starred change-color">ADD</button>
+<button class="add-button starred change-color">ADD</button>
 
 </a>
                  </div>
 
-               <div class="line first-line-m-t"></div>
-               <div class="line"></div>
-               <div class="line"></div>
-               <div class="line"></div>
              
-               <div class="line"></div>
-               <div class="line"></div>
             </div>
 
 
@@ -275,64 +273,5 @@
 
 
 
-
-   <script>
-
-document.getElementsByClassName("message")[0].addEventListener("click", openRightContent);
-document.getElementsByClassName("next-icon")[0].addEventListener("click", closeRightContent);
-document.getElementsByClassName("add-task")[0].addEventListener("click", addTask);
-document.getElementsByClassName("fa fa-bars")[0].addEventListener("click", manageSideNav);
-
-
-
-   function manageSideNav() {
-   
-       
-    
- 
-  var x = document.getElementsByClassName("side-nav-bar")[0];
-
-
-  if (x.style.width == "21%") {
-         
-    document.getElementsByClassName("side-nav-bar")[0].style.width = "4%";
-  document.getElementsByClassName("main-content")[0].style.width = "96%";
-  for (index = 0; index < 6; index++) {
-
-document.getElementsByClassName("content-data")[index].style.display = 'none';
-}
-   } else {
-
-for (index = 0; index < 6; index++) {
-
-document.getElementsByClassName("content-data")[index].style.display = 'inline';
-}
-
-   x.style.width = "21%";
- }
-
-
-}
-
-
-   function openRightContent() {
-    document.getElementsByClassName("right-nav-bar")[0].style.display = 'block';
-    
-}
-
-  function closeRightContent() {
-    document.getElementsByClassName("right-nav-bar")[0].style.display = 'none';
-}
-
-function addTask() {
-
-        document.getElementsByClassName("add-task")[0].style.display = 'none';
-        document.getElementsByClassName("task-content")[1].style.display = 'block';
-
-
-}
-   
-   
-   
-   </script>
+   <script src="application.js"></script>
 </html>
