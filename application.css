@@ -4,6 +4,9 @@ body {
 body .total-content {
   margin-left: 1%;
 }
+body .total-content .display-none {
+  display: none;
+}
 body .total-content .top-bar {
   background-color: #1879D2;
   width: 98%;
@@ -72,6 +75,23 @@ body .total-content .middle-content .side-nav-bar .topnav {
   background-color: #ffffff;
   display: inline;
 }
+body .total-content .middle-content .side-nav-bar .topnav .icons .list-name .add-name-button {
+  color: gray;
+  font-size: 15px;
+  border: none;
+  background-color: transparent;
+}
+body .total-content .middle-content .side-nav-bar .topnav .icons .list-name .add-list-name {
+  height: 6vh;
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 12vw;
+}
+body .total-content .middle-content .side-nav-bar .topnav .icons .list-name ::placeholder {
+  font-size: 15px;
+  margin-left: 15px;
+}
 body .total-content .middle-content .side-nav-bar .topnav .icons .opacity {
   opacity: 0.5;
 }
@@ -110,7 +130,6 @@ body .total-content .middle-content .side-nav-bar .topnav li {
   list-style-type: none;
   cursor: pointer;
   padding: 12px 12px;
-  border-left: 2px solid #ffffff;
 }
 body .total-content .middle-content .side-nav-bar .topnav a {
   color: white;
@@ -128,9 +147,6 @@ body .total-content .middle-content .main-content {
   background-color: white;
 }
 body .total-content .middle-content .main-content .make-content-none {
-  display: none;
-}
-body .total-content .middle-content .main-content .display-none {
   display: none;
 }
 body .total-content .middle-content .main-content .my-list-elements {

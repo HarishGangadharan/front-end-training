@@ -52,30 +52,44 @@
                            <p  class="content-data">Tasks </p>
                         </a>
                      </li>
-                     <li class="list-icon">
+                     <li class="list-icon display-none">
                         <a>
                            <i class=" fa fa-list-ul icon-my-list icons-size"></i>
                           
                            <p class="label-my-list content-data">My List </p>
                         </a>
                      </li>
+                     <ul class="newly-added-list">
+
+                     </ul>
                      <li >
-                        <a>
+                        <a class="new-list">
                            <img src="plus"class="opacity icon-my-list icons-size">
                             
                            <p class="label-my-list align content-data" >New List </p>
                         </a>
+
+                        <div class="list-name display-none">
+
+
+                                <input type = "text" class="add-list-name" placeholder="Add a list name" >
+                     
+                                <button class="add-name-button  display-none">Add Name</button>
+
+                        </div>
                      </li>
                   </ul>
                </nav>
             </div>
             <div class="main-content">
                <div class="my-list-elements">
-                  <h2>My List           
+                  <h2 class="my-list-label">My List           
                      <a class="more-icon">
                      <i class="fa fa-ellipsis-h"></i>
                      </a>   
                   </h2>
+
+                  
                   <a class="sort-icon">
                      <i class="fa fa-exchange rotate"></i>
                      <h4>Sort</h4>
