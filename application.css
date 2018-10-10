@@ -121,6 +121,9 @@ body .total-content .middle-content .side-nav-bar .topnav .icons .icons-size {
 body .total-content .middle-content .side-nav-bar .topnav .icons .list-icon {
   margin-top: 5%;
 }
+body .total-content .middle-content .side-nav-bar .topnav .icons .m-l {
+  margin-left: 73%;
+}
 body .total-content .middle-content .side-nav-bar .topnav ul {
   padding-left: 0px;
   margin-top: 20px;
