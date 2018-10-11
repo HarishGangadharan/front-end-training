@@ -1,6 +1,9 @@
 body {
   background-color: black;
 }
+body .float-right {
+  float: right;
+}
 body .total-content {
   margin-left: 1%;
 }
@@ -164,6 +167,9 @@ body .total-content .middle-content .main-content .my-list-elements .sort-icon {
   float: right;
   margin-right: 3%;
 }
+body .total-content .middle-content .main-content .my-list-elements .sort-icon .color {
+  color: #5a88e2;
+}
 body .total-content .middle-content .main-content .my-list-elements .sort-icon .rotate {
   transform: rotate(90deg);
   color: #5a88e2;
@@ -291,6 +297,14 @@ body .total-content .middle-content .right-nav-bar .my-day-content .first-conten
   border-bottom-color: #e2e2e2;
   border-left: 84px;
 }
+body .total-content .middle-content .right-nav-bar .my-day-content .first-content .date .date-picker {
+  display: none;
+  margin-top: 19%;
+  margin-left: 25%;
+  border: none;
+  color: gray;
+  outline: none;
+}
 body .total-content .middle-content .right-nav-bar .my-day-content .first-content .remind-content .align-top {
   margin-top: 48%;
 }
@@ -314,6 +328,9 @@ body .total-content .middle-content .right-nav-bar .my-day-content .icon .adjust
   margin-top: 35%;
 }
 body .total-content .middle-content .right-nav-bar .my-day-content textarea {
+  padding-top: 24px;
+  padding-left: 23px;
+  color: gray;
   resize: none;
   outline: none;
   border: none;
