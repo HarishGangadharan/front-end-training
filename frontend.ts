@@ -1,8 +1,101 @@
-var doc = document;
-var listId = 0;
-var taskId = 0;
-var itemLists = [];
-const click = "click";
+var doc : Document = document;
+var listId : number = 0;
+var taskId : number = 0;
+var itemLists : List[] = [];
+const click : string = "click";
+
+class List {
+   private id: string;
+   private listName :string;
+   private  tasks: Task[] = [];
+
+   public getId() : string {
+       return this.id;
+   }
+   public setId(id: string) :void {
+       this.id = id;
+   }
+
+   public getListName() : string {
+    return this.listName;
+}
+public setListName(listName: string) :void {
+    this.listName = listName;
+}
+
+
+public getTasks() : Task[] {
+    return this.tasks;
+}
+public setTasks(tasks: Task[]) :void {
+    this.tasks = tasks;
+}
+
+
+}
+
+
+class Task {
+    private  id: string;
+    private   taskName: string;
+    private  isSelected: boolean;
+    private isStarred: boolean;
+    private  remindDate: string;
+    private   dueDate: string;
+    private hint: string;
+  
+    public getId() : string{
+       return this.id;
+    }
+    public setId(id :string) :void {
+        this.id = id;
+    }
+    public getTaskName() : string{
+        return this.taskName;
+     }
+     public setTaskName(taskName :string) :void {
+         this.taskName = taskName;
+     }
+
+
+     public getTaskSelected() : boolean{
+        return this.isSelected;
+     }
+     public setTaskSelected(isSelected :boolean) :void {
+         this.isSelected = isSelected;
+     }
+
+     public getTaskStarred() : boolean{
+        return this.isStarred;
+     }
+     public setTaskStarred(isStarred :boolean) :void {
+         this.isStarred = isStarred;
+     }
+
+
+     public getRemindDate() : string{
+        return this.remindDate;
+     }
+     public setRemindDate(remindDate :string) :void {
+         this.remindDate = remindDate;
+     }
+
+     public getDueDate() : string{
+        return this.dueDate;
+     }
+     public setDueDate(dueDate :string) :void {
+         this.dueDate = dueDate;
+     }
+
+     public getHint() : string{
+        return this.hint;
+     }
+     public setHint(hint :string) :void {
+         this.hint = hint;
+     }
+
+}
+
 
 /**
  * Add a event listener to the element.
@@ -10,7 +103,7 @@ const click = "click";
  * @param {event name} event
  * @param {function name} functionName
  */
-function addEventListener(className, event, functionName) {
+function addEventListener(className, event, functionName) : void {
     var elements = getAllElementsByClassName(className);
     for (let index = 0; index < elements.length; index++) {
         elements[index].addEventListener(event, functionName);
@@ -21,7 +114,7 @@ function addEventListener(className, event, functionName) {
  * Obtains all the element of the specified classname.
  * @param {classname of the element.} className
  */
-function getAllElementsByClassName(className) {
+function getAllElementsByClassName(className) : any{
     return doc.getElementsByClassName(className);
 }
 
@@ -29,7 +122,7 @@ function getAllElementsByClassName(className) {
  * Obtains  the element of the specified id.
  * @param {id of the element.} className
  */
-function getElementById(elementId) {
+function getElementById(elementId) : any {
     return doc.getElementById(elementId);
 }
 
@@ -37,7 +130,7 @@ function getElementById(elementId) {
  * show the date picker to select the remind date.
  */
 function pickshowRemindDateToSelectDate() {
-    var date = getElementsByClassName("date-picker");
+    var date  =(<HTMLInputElement> getElementsByClassName("date-picker"));
     var today = new Date()
     date.min = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
     makeDisplayBlock("date-picker");
@@ -47,10 +140,10 @@ function pickshowRemindDateToSelectDate() {
  * set the reminder date.
  * @param {task object} task
  */
-function setRemindDate(task) {
+function setRemindDate(task)  : void {
     var text = getElementsByClassName("remind-me-value");
-    if (null != task.remindDate) {
-        text.innerHTML = task.remindDate;
+    if (null != task.getRemindDate()) {
+        text.innerHTML = task.getRemindDate();
     } else {
         text.innerHTML = "Remind me";
     }
@@ -60,14 +153,14 @@ function setRemindDate(task) {
  * add the remind date to the task.
  * @param {event} e
  */
-function addRemindDate(e) {
+function addRemindDate(e) : void {
     if (e.target.value != null) {
         var rightContent = getElementsByClassName("right-nav-bar");
         var listId = getElementsByClassName("new-content").id;
         var listItem = getElementByListId(listId);
         var task = getElementByTaskId(listItem, rightContent.id);
         var dateValue = e.target.value;
-        task.remindDate = dateValue;
+        task.setRemindDate(dateValue);
         makeDisplayNone("date-picker");
         setRemindDate(task);
     }
@@ -76,8 +169,8 @@ function addRemindDate(e) {
 /**
  * show the date picker to select the due date.
  */
-function pickshowDueDateToSelectDate() {
-        var date = getElementsByClassName("due-date-picker");
+function pickshowDueDateToSelectDate() : void{
+        var date = <HTMLInputElement>getElementsByClassName("due-date-picker");
         var today = new Date()
         date.min = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
         makeDisplayBlock("due-date-picker");
@@ -86,10 +179,10 @@ function pickshowDueDateToSelectDate() {
      * set the due date.
      * @param {task object} task
      */
-function setDueDate(task) {
+function setDueDate(task): void {
         var text = getElementsByClassName("due-date-value");
-        if (null != task.dueDate) {
-            text.innerHTML = task.dueDate;
+        if (null != task.getDueDate()) {
+            text.innerHTML = task.getDueDate();
         } else {
             text.innerHTML = "Due date";
         }
@@ -98,14 +191,14 @@ function setDueDate(task) {
      * add the due date to the task.
      * @param {event} e
      */
-function addDueDate(e) {
+function addDueDate(e) : void {
     if (e.target.value != null) {
         var rightContent = getElementsByClassName("right-nav-bar");
         var listId = getElementsByClassName("new-content").id;
         var listItem = getElementByListId(listId);
         var task = getElementByTaskId(listItem, rightContent.id);
         var dateValue = e.target.value;
-        task.dueDate = dateValue;
+        task.setDueDate(dateValue);
         makeDisplayNone("due-date-picker");
         setDueDate(task);
     }
@@ -115,10 +208,10 @@ function addDueDate(e) {
  * set the task hint.
  * @param {task object} task
  */
-function setTaskHint(task) {
-        var textArea = getElementsByClassName("textarea-content");
-        if (null != task.hint) {
-            textArea.value = task.hint;
+function setTaskHint(task) : void {
+        var textArea =<HTMLInputElement> getElementsByClassName("textarea-content");
+        if (null != task.getHint()) {
+            textArea.value = task.getHint();
         } else {
             textArea.value = "";
         }
@@ -127,47 +220,47 @@ function setTaskHint(task) {
      * Add a hint to the particular task.
      * @param {event } e
      */
-function addTaskHint(e) {
+function addTaskHint(e) : void {
     var rightContent = getElementsByClassName("right-nav-bar");
     var listId = getElementsByClassName("new-content").id;
     var listItem = getElementByListId(listId);
     var task = getElementByTaskId(listItem, rightContent.id);
-    task.hint = (e.target.value);
+    task.setHint(e.target.value);
     setTaskHint(task);
 }
 
 /**
  * Init function
  */
-function init() {
+function init() : void {
 
-    var inputTask = getElementsByClassName("input-type");
-    inputTask.addEventListener("keydown", function e(e) {
+    var inputTask = <HTMLInputElement>getElementsByClassName("input-type");
+    inputTask.addEventListener("keydown", function e(e : KeyboardEvent) {
         if (e.keyCode == 13) {
-            createTask();
+            createTask(e);
         }
     });
 
-    inputTask.addEventListener("focusout", function hideAddTask() {
+   inputTask.addEventListener("focusout", function hideAddTask(e) {
         if (inputTask.value != '') {
-            createTask();
+            createTask(e);
         } else {
             closeTask();
         }
     });
 
-    var listNameInput = getElementsByClassName("add-list-name");
-    listNameInput.addEventListener("keydown", function e(e) {
+    var listNameInput = <HTMLInputElement>getElementsByClassName("add-list-name");
+    listNameInput.addEventListener("keydown", function e(e : KeyboardEvent) {
         if (e.keyCode == 13) {
             if (listNameInput.value != '') {
-                createNewList();
+                createNewList(e);
             }
         }
     });
 
-    listNameInput.addEventListener("focusout", function hideAddTask() {
+    listNameInput.addEventListener("focusout", function hideAddTask(e) {
         if (listNameInput.value != '') {
-            createNewList();
+            createNewList(e);
         } else {
             hideAddListName();
         }
@@ -198,7 +291,7 @@ init();
  * make the task important
  * @param {event} e
  */
-function makeTaskSelected(e) {
+function makeTaskSelected(e): void {
     var listId = getElementsByClassName("new-content").id;
     var listItem = getElementByListId(listId);
     var task = getElementByTaskId(listItem, e.target.parentElement.id);
@@ -223,7 +316,7 @@ function makeTaskSelected(e) {
  * make the task important
  * @param {event} e
  */
-function makeTaskStarred(e) {
+function makeTaskStarred(e) : void {
     var listId = getElementsByClassName("new-content").id;
     var listItem = getElementByListId(listId);
     var task = getElementByTaskId(listItem, e.target.parentElement.id);
@@ -248,12 +341,12 @@ function makeTaskStarred(e) {
  * Delete a list from the entire lists.
  * @param {event} event
  */
-function deleteList(event) {
+function deleteList(event): void {
     var listItem = getElementByListId(event.target.id);
     var listsContent = getElementsByClassName("newly-added-list");
     var deletedList = getElementById(listItem.id);
     for (let index = 0; index < itemLists.length; index++) {
-        if (itemLists[index].id == listItem.id) {
+        if (itemLists[index].getId() == listItem.id) {
             itemLists.splice(index, 1);
         }
     }
@@ -267,7 +360,7 @@ function deleteList(event) {
 /**
  * Remove all the task content present.
  */
-function removeTaskContent() {
+function removeTaskContent() : void {
     var taskContent = doc.getElementsByClassName("task-content");
     var main = getElementsByClassName("new-content");
     for (let index = 0; index < taskContent.length; index++) {
@@ -282,7 +375,7 @@ function removeTaskContent() {
  * Make the task selected based on the flag present.
  * @param {task object} task
  */
-function markSelected(task) {
+function markSelected(task): void {
     var unMarkedIcon = getElementsByClassName(" fa fa-circle-o color opacity");
     var MarkedIcon = getElementsByClassName(" fa fa-check-circle color opacity");
     if (task.isSelected) {
@@ -296,36 +389,18 @@ function markSelected(task) {
     }
 }
 
-/**
- * Make the task selected based on the flag present.
- * @param {task object} task
- */
-function markStarred(task) {
-    var unMarkedIcon = getElementsByClassName("fa fa-star-o starred opacity");
-    var MarkedIcon = getElementsByClassName("fa fa-star starred opacity");
-    if (task.isStarred) {
-        if (unMarkedIcon) {
-            setClassName("fa fa-star starred opacity", unMarkedIcon);
-        }
-    } else {
-        if (MarkedIcon) {
-            setClassName("fa fa-star-o starred opacity", MarkedIcon);
-        }
-    }
-}
-
 
 /**
  * Make the task select from the entire tasks.
  * @param {list of task} tasks
  */
-function makeTaskStar(tasks) {
+function makeTaskStar(tasks) : void {
     var unMarkedIcon = doc.getElementsByClassName("fa fa-star-o starred ");
     var MarkedIcon = doc.getElementsByClassName("fa fa-star starred ");
     for (let index = 0; index < tasks.length; index++) {
-        if (tasks[index].isStarred) {
+        if (tasks[index].getTaskStarred()) {
+            alert(tasks[index].getTaskStarred());
             if (unMarkedIcon[index]) {
-                alert(tasks[index].isStarred);
 
                 setClassName("fa fa-star starred ", unMarkedIcon[index]);
             }
@@ -341,7 +416,7 @@ function makeTaskStar(tasks) {
  * Make the task select from the entire tasks.
  * @param {list of task} tasks
  */
-function makeTaskSelect(tasks) {
+function makeTaskSelect(tasks) : void {
     var unMarkedIcon = doc.getElementsByClassName("fa fa-circle-o color aa");
     var MarkedIcon = doc.getElementsByClassName("fa fa-check-circle color aa");
     for (let index = 0; index < tasks.length; index++) {
@@ -352,7 +427,7 @@ function makeTaskSelect(tasks) {
             }
         } else {
             if (MarkedIcon[index]) {
-                setClassName("fa fa-check-circle color aa", unMarkedIcon[index]);
+                setClassName("fa fa-check-circle color aa", MarkedIcon[index]);
             }
         }
     }
@@ -362,7 +437,7 @@ function makeTaskSelect(tasks) {
  * Display a particular list by the specified list id.
  * @param {event} event
  */
-function displaySelectedList(event) {
+function displaySelectedList(event) : void {
     makeDisplayNone("right-nav-bar");
     var listId = event.target.id;
     var listItem = getElementByListId(listId);
@@ -392,17 +467,17 @@ function displaySelectedList(event) {
 /**
  * show the input box to add new list.
  */
-function showNewListInput() {
+function showNewListInput() : void {
     makeDisplayNone("new-list");
     makeDisplayInlineBlock("add-name-button");
     makeDisplayBlock("list-name");
-    getElementsByClassName("add-list-name").focus();
+    (<HTMLInputElement>getElementsByClassName("add-list-name")).focus();
 }
 
 /**
  * hide the input box which helps to add new list.
  */
-function hideAddListName() {
+function hideAddListName() : void {
     makeDisplayNone("list-name");
     makeDisplayInline("new-list");
 }
@@ -412,21 +487,19 @@ function hideAddListName() {
  * Obtains the first element with the specified class name/
  * @param {class name of the element} className
  */
-function getElementsByClassName(className) {
+function getElementsByClassName(className) : any {
     return doc.getElementsByClassName(className)[0];
 }
 
 /**
  * creates a new list.
  */
-function createNewList() {
-    var mylistItem = {
-        id: "list" + ++listId,
-        listName: null,
-        tasks: [],
-    };
+function createNewList(e) : void {
+    var list = new List();
+    list.setId("list" + ++listId);
     var listContent = getElementsByClassName("newly-added-list");
-    var textValue = getElementsByClassName("add-list-name").value;
+    var textValue : string = (<HTMLInputElement>getElementsByClassName("add-list-name")).value;
+    list.setListName(textValue);
     var newLi = createElement("li");
     var newAnchor = createElement("a");
     var newIcon = createElement("i");
@@ -438,13 +511,12 @@ function createNewList() {
     var node = doc.createTextNode(textValue);
     newPara.appendChild(node);
     setClassName("list-icon", newLi);
-    getElementsByClassName("add-list-name").focus();
-    getElementsByClassName("add-list-name").value = "";
+    (<HTMLInputElement> getElementsByClassName("add-list-name")).focus();
+    (<HTMLInputElement> getElementsByClassName("add-list-name")).value = "";
     newLi.appendChild(newAnchor);
     listContent.appendChild(newLi);
-    setId(mylistItem.id, newLi);
-    mylistItem.listName = textValue;
-    itemLists.push(mylistItem);
+    setId(list.getId(), newLi);
+    itemLists.push(list);
     newLi.addEventListener(click, displaySelectedList);
 }
 
@@ -452,7 +524,7 @@ function createNewList() {
 /**
  * delete a task from the list.
  */
-function deleteTask() {
+function deleteTask() : void {
     var ele = getElementsByClassName("active").parentNode;
     var main = getElementsByClassName("new-content");
     var taskContent = getElementsByClassName("right-nav-bar");
@@ -471,10 +543,10 @@ function deleteTask() {
  * Helps to find a list from the specified list id.
  * @param {list id to be found} listId
  */
-function getElementByListId(listId) {
+function getElementByListId(listId)  {
     var element;
     for (let index = 0; index < itemLists.length; index++) {
-        if (listId == itemLists[index].id) {
+        if (listId == itemLists[index].getId()) {
             element = (itemLists[index]);
         }
     }
@@ -487,9 +559,9 @@ function getElementByListId(listId) {
  * @param {list object} list
  * @param {task id to be searched from the list} taskId
  */
-function getElementByTaskId(list, taskId) {
+function getElementByTaskId(list , taskId) {
     var task;
-    for (index = 0; index < list.tasks.length; index++) {
+    for (let index = 0; index < list.tasks.length; index++) {
         if (list.tasks[index].id == taskId) {
             task = list.tasks[index];
         }
@@ -503,18 +575,11 @@ function getElementByTaskId(list, taskId) {
  * Create a new task.
  * @param {event} event
  */
-function createTask(event) {
-    var task = {
-        id: "task" + ++taskId,
-        taskName: null,
-        isSelected: false,
-        isStarred: false,
-        remindDate: null,
-        dueDate: null,
-        hint: null,
-    };
-
-    var textValue = getElementsByClassName("input-type").value;
+function createTask(event) : void {
+    var task = new Task();
+    task.setId("task" + ++taskId);
+  
+    var textValue : string =(<HTMLInputElement> getElementsByClassName("input-type")).value;
     if (textValue != "") {
         var divContent = getElementsByClassName("new-content");
         var newDiv = createElement("div");
@@ -531,19 +596,19 @@ function createTask(event) {
         newDiv.appendChild(newStarIcon);
         newDiv.appendChild(para);
         divContent.appendChild(newDiv);
-        getElementsByClassName("input-type").value = "";
-        getElementsByClassName("input-type").focus();
+        (<HTMLInputElement>getElementsByClassName("input-type")).value = "";
+        (<HTMLInputElement>getElementsByClassName("input-type")).focus();
         para.addEventListener(click, openRightContent);
         newSelectIcon.addEventListener(click, makeTaskSelected);
         newStarIcon.addEventListener(click, makeTaskStarred);
 
-        setId(task.id, newSelectIcon);
-        setId(task.id, para);
-        setId(task.id, newDiv);
-        task.taskName = textValue;
+        setId(task.getId(), newSelectIcon);
+        setId(task.getId(), para);
+        setId(task.getId(), newDiv);
+        task.setTaskName(textValue);
         for (let index = 0; index < itemLists.length; index++) {
-            if (divContent.id == itemLists[index].id) {
-                itemLists[index].tasks.push(task);
+            if (divContent.id == itemLists[index].getId()) {
+                itemLists[index].getTasks().push(task);
             }
         }
     }
@@ -552,18 +617,18 @@ function createTask(event) {
 /**
  * toggle the side navigation bar.
  */
-function manageSideNav() {
-    var x = getElementsByClassName("side-nav-bar");
+function manageSideNav() : void{
+    var x = (<HTMLInputElement> getElementsByClassName("side-nav-bar"));
     var listData = doc.getElementsByClassName("content-data");
     if (x.style.width == "21%") {
-        getElementsByClassName("side-nav-bar").style.width = "4%";
-        getElementsByClassName("main-content").style.width = "96%";
+        (<HTMLInputElement>getElementsByClassName("side-nav-bar")).style.width = "4%";
+        (<HTMLInputElement>getElementsByClassName("main-content")).style.width = "96%";
         for (let index = 0; index < listData.length; index++) {
-            doc.getElementsByClassName("content-data")[index].style.display = 'none';
+            (<HTMLInputElement>doc.getElementsByClassName("content-data")[index]).style.display = 'none';
         }
     } else {
         for (let index = 0; index < listData.length; index++) {
-            doc.getElementsByClassName("content-data")[index].style.display = 'inline';
+            (<HTMLInputElement>doc.getElementsByClassName("content-data")[index]).style.display = 'inline';
         }
         x.style.width = "21%";
     }
@@ -574,7 +639,7 @@ function manageSideNav() {
  * make the select icon change to checked.
  * @param {task object} task
  */
-function changeSelectIcon(task) {
+function changeSelectIcon(task) : void {
     var unCheckedIcon = getElementsByClassName("fa fa-circle-o color opacity");
     var selectedIcon = getElementsByClassName("fa fa-check-circle color opacity");
     var rightContent = getElementsByClassName("right-nav-bar");
@@ -594,7 +659,7 @@ function changeSelectIcon(task) {
  * make the select icon change to checked.
  * @param {task object} task
  */
-function changeStarIcon(task) {
+function changeStarIcon(task) : void {
     var unCheckedIcon = getElementsByClassName("fa fa-star-o starred opacity");
     var selectedIcon = getElementsByClassName("fa fa-star starred opacity");
     var rightContent = getElementsByClassName("right-nav-bar");
@@ -618,7 +683,7 @@ function changeStarIcon(task) {
  * show the right navigation bar.
  * @param {event} event
  */
-function openRightContent(event) {
+function openRightContent(event) : void {
     var mainContentTaskId = (event.currentTarget.parentElement.id);
     var main = getElementsByClassName("new-content");
     var listItem = getElementByListId(main.id);
@@ -627,7 +692,6 @@ function openRightContent(event) {
     changeStarIcon(task);
 
     markSelected(task);
-    markStarred(task);
 
     setRemindDate(task);
     setDueDate(task);
@@ -642,23 +706,23 @@ function openRightContent(event) {
 /**
  * close the right navigation bar.
  */
-function closeRightNavBar() {
+function closeRightNavBar() : void {
     makeDisplayNone("right-nav-bar");
 }
 
 /**
  * show the input to create a new task.
  */
-function showCreateTask() {
+function showCreateTask() : void {
     makeDisplayNone("add-task");
     makeDisplayBlock("task-content display-none");
-    getElementsByClassName("input-type").focus();
+    (<HTMLInputElement>getElementsByClassName("input-type")).focus();
 }
 
 /**
  * hide the input box which allows to create a new task.
  */
-function closeTask() {
+function closeTask() : void{
     makeDisplayBlock("add-task");
     makeDisplayNone("task-content display-none");
 }
@@ -668,8 +732,8 @@ function closeTask() {
  * Make the element display as none.
  * @param {class name of the element} className
  */
-function makeDisplayNone(className) {
-    getElementsByClassName(className).style.display = 'none';
+function makeDisplayNone(className : string) : void {
+    (<HTMLInputElement>getElementsByClassName(className)).style.display = 'none';
 }
 
 
@@ -677,8 +741,8 @@ function makeDisplayNone(className) {
  * Make the element display as block.
  * @param {class name of the element} className
  */
-function makeDisplayBlock(className) {
-    getElementsByClassName(className).style.display = 'block';
+function makeDisplayBlock(className : string) : void {
+    (<HTMLInputElement>getElementsByClassName(className)).style.display = 'block';
 }
 
 
@@ -686,23 +750,23 @@ function makeDisplayBlock(className) {
  * Make the element display as inline block.
  * @param {class name of the element} className
  */
-function makeDisplayInlineBlock(className) {
-    getElementsByClassName(className).style.display = 'inline-block';
+function makeDisplayInlineBlock(className : string) : void {
+    (<HTMLInputElement>getElementsByClassName(className)).style.display = 'inline-block';
 }
 
 /**
  * Make the element display as inline.
  * @param {class name of the element} className
  */
-function makeDisplayInline(className) {
-    getElementsByClassName(className).style.display = 'inline';
+function makeDisplayInline(className : string) : void {
+    (<HTMLInputElement>getElementsByClassName(className)).style.display = 'inline';
 }
 
 /**
  * Create a new element.
  * @param {element} element
  */
-function createElement(element) {
+function createElement(element : string) : Element{
     return doc.createElement(element);
 }
 
@@ -711,7 +775,7 @@ function createElement(element) {
  * @param {class name } elementClassName
  * @param {element} element
  */
-function setClassName(elementClassName, element) {
+function setClassName(elementClassName : string , element : Element) : void {
     element.className = elementClassName;
 }
 
@@ -720,6 +784,6 @@ function setClassName(elementClassName, element) {
  * @param {id} id
  * @param {element} element
  */
-function setId(id, element) {
+function setId(id : string, element : Element) : void {
     element.id = id;
 }
