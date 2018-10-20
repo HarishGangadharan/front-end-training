@@ -13,10 +13,6 @@ class Task {
     constructor(id:string,taskName:string){
         this.id= id;
         this.taskName = taskName;
-        this.isSelected = false;
-
-        this.isStarred = false;
-
         }
   
     public getId() : string{

@@ -2,7 +2,7 @@ import * as React from 'react';
 import itemList from './ItemList';
 
 
-class RightContent extends React.Component<{task: any} , {isTaskSelected: boolean, hint : string,isDuePickerSelected: boolean,  isPickerSelected : boolean}> {
+class RightContent extends React.Component<{task: any} , { hint : string,isDuePickerSelected: boolean,  isPickerSelected : boolean}> {
     private classNameDiv : string = "";
 
     constructor(props : any) {
@@ -10,8 +10,6 @@ class RightContent extends React.Component<{task: any} , {isTaskSelected: boolea
         super(props);
         this.state = {
             isDuePickerSelected: false,
-            isTaskSelected : false,
-
 
             isPickerSelected : false,
 
@@ -64,52 +62,13 @@ class RightContent extends React.Component<{task: any} , {isTaskSelected: boolea
 
               
            public addHint = (e : any) => {
-               this.setState({
-                hint : e.target.value,
-
-               })
+            if(this.props.task !=null) {
+                this.props.task.setHint(e.target.value);
     
-                   
+            }        
 
+            console.log(itemList);   
              
-           }
-
-
-        
-
-
-           public makeImportant = () => {
-
-            this.setState({
-                isTaskSelected : !this.state.isTaskSelected,
-            })
-            if(this.props.task !=null) {
-
-           this.props.task.setTaskSelected(this.state.isTaskSelected);
-
-            }
-
-
-               }
-
-
-
-
-           public setHint = (e : any) => {
-            if(this.props.task !=null) {
-
-                 this.props.task.setHint(this.state.hint);
-
-                
-        
-                
-        
-
-            }
-           
-
-
-
            }
 
            
@@ -118,11 +77,20 @@ class RightContent extends React.Component<{task: any} , {isTaskSelected: boolea
    
 
   public render() {
-
+      let hint;
         if(this.props.task !== null) {
          this.classNameDiv =    "right-nav-bar display-block";
-   
-        
+         if(this.props.task.getHint()) {
+            hint= this.props.task.getHint()
+
+            alert(this.props.task.getHint() + "hint valye" + hint)
+
+         } else {
+            alert("no value" + hint);
+            hint= "";
+
+
+         }
         } else {
             this.classNameDiv =    "right-nav-bar";
 
@@ -130,14 +98,14 @@ class RightContent extends React.Component<{task: any} , {isTaskSelected: boolea
 
       
 
-console.log(itemList)
+
     return (
      
        
         <div className= {this.classNameDiv} >
         <div className="right-content-1">
             <div className="select-icon">
-                <i className={(this.props.task != null) ? this.props.task.getTaskSelected() ? "fa fa-circle color opacity" : "fa fa-circle-o color opacity":"fa fa-circle-o color opacity" } onClick= {this.makeImportant}/>
+                <i className="fa fa-circle-o color opacity"/>
             </div>
             <div className="content">{(this.props.task != null ? this.props.task.getTaskName() : "")} </div>
             
@@ -192,10 +160,7 @@ console.log(itemList)
             </div>
         </div>
         <div className="my-day-content textarea-height">
-            <textarea  
-            className="textarea-content" rows={4} cols={50} placeholder="Add a note"
-             onChange = {this.addHint}  onBlur = {this.setHint} />
-
+            <textarea value= {hint} className="textarea-content" rows={4} cols={50} placeholder="Add a note" onBlur = {this.addHint}  />
           
         </div>
         <div className="footer-content">
@@ -218,9 +183,6 @@ console.log(itemList)
 
 
     );
-
-    
-   
   }
 }
 
