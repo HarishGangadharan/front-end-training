@@ -1,8 +1,7 @@
 import * as React from 'react';
-import itemList from './ItemList';
 
 
-class RightContent extends React.Component<{task: any} , {isTaskSelected: boolean, hint : string,isDuePickerSelected: boolean,  isPickerSelected : boolean}> {
+class RightContent extends React.Component<{task: any, setHint : any, deleteTask : any} , {isTaskSelected: boolean, hint : string,isDuePickerSelected: boolean,  isPickerSelected : boolean}> {
     private classNameDiv : string = "";
 
     constructor(props : any) {
@@ -64,10 +63,8 @@ class RightContent extends React.Component<{task: any} , {isTaskSelected: boolea
 
               
            public addHint = (e : any) => {
-               this.setState({
-                hint : e.target.value,
-
-               })
+               this.props.setHint(e.target.value);
+              
     
                    
 
@@ -95,22 +92,7 @@ class RightContent extends React.Component<{task: any} , {isTaskSelected: boolea
 
 
 
-           public setHint = (e : any) => {
-            if(this.props.task !=null) {
-
-                 this.props.task.setHint(this.state.hint);
-
-                
-        
-                
-        
-
-            }
-           
-
-
-
-           }
+          
 
            
     
@@ -130,7 +112,6 @@ class RightContent extends React.Component<{task: any} , {isTaskSelected: boolea
 
       
 
-console.log(itemList)
     return (
      
        
@@ -162,7 +143,7 @@ console.log(itemList)
             <i className="fa fa-sun-o adjust-margin"/>
                 </div>
                 <div className="remind-content" onClick= {this.showDatePickerToAddRemindDate}>
-                    <h4 className="remind-me-value">{(this.props.task != null ? this.props.task.getRemindDate() ?this.props.task.getRemindDate() :"Remind me" : "Remind me")}</h4>
+                    <h4 className="remind-me-value">{(this.props.task !== null ? this.props.task.getRemindDate() ?this.props.task.getRemindDate() :"Remind me" : "Remind me")}</h4>
                 </div>
                 <div className="date">
                     <input type= "date"  onBlur = {this.setRemindDate}  className= {(this.state.isPickerSelected ? "date-picker display-block" : "date-picker")} id="datePickerId" />
@@ -194,7 +175,7 @@ console.log(itemList)
         <div className="my-day-content textarea-height">
             <textarea  
             className="textarea-content" rows={4} cols={50} placeholder="Add a note"
-             onChange = {this.addHint}  onBlur = {this.setHint} />
+             onChange = {this.addHint}  value= {(this.props.task != null ?this.props.task.getHint() : "" )} />
 
           
         </div>
@@ -209,7 +190,7 @@ console.log(itemList)
             </div>
             <div className="delete-icon" title="delete task">
                 <a>   
-                <i className="fa fa-trash color-change"/>
+                <i className="fa fa-trash color-change" onClick= {this.props.deleteTask} />
                 </a>
             </div>
         </div>

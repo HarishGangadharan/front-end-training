@@ -1,6 +1,8 @@
 import * as React from 'react';
+import itemList from './ItemList';
 
 import Main from './Main';
+
 import opertions from './Opertions';
 
 import RightContent from './RightContent';
@@ -39,6 +41,7 @@ class MainContent extends React.Component <{} , {activeId : string , activeTaskI
 
 
     public makeListActive = (listId : string) => {
+    
        
 this.setState({
     activeId : listId,
@@ -46,7 +49,27 @@ this.setState({
     task : null,
 
 })  
+
 }
+
+public setHint = (hint :string)  => {
+
+    this.state.task.setHint(hint)
+    
+    
+}
+
+public deleteTask = ()  => {
+
+   
+  this.state.list.getTasks().splice(this.state.list.getTasks().indexOf(this.state.task), 1)
+      
+
+    console.log(itemList)
+
+
+}
+
 
   public render() {
 
@@ -55,7 +78,7 @@ this.setState({
         <div className = "middle-content" >
 <SideNav makeListActive = {this.makeListActive}/>
 <Main activeId = {this.state.activeId} makeTaskActive = {this.makeTaskActive}/> 
-< RightContent task = {this.state.task}/>
+< RightContent task = {this.state.task} setHint = {this.setHint} deleteTask = {this.deleteTask}/>
 
 
         </div>

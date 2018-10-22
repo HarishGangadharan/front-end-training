@@ -6,17 +6,19 @@ import Task from './Task';
 
 
 
-class Main extends React.Component <{activeId :string ,  makeTaskActive : (e : any) => void} , { list : any , inputValue : string ,array : [],  isSelected :boolean}> {
+class Main extends React.Component <{activeId :string ,  makeTaskActive : (e : any) => void} , { isTaskSelected: boolean, list : any , inputValue : string ,array : [],  isSelected :boolean}> {
 
 
     constructor(props: any) {
         super(props);
         this.state={
             array : [],
-            list : null,
-
             inputValue : "",
             isSelected : false,
+            isTaskSelected : false,
+            list : null,
+
+
         };
 
     }
@@ -73,6 +75,22 @@ public makeTaskActive= (event : any) => {
     this.props.makeTaskActive(event.target.id);
 }
 
+public makeImportant = (e : any) => {
+    alert("aa" +e.target.id)
+
+ const task  = operations.findTaskById(e.target.id)
+
+ this.setState({
+    isTaskSelected : !this.state.isTaskSelected,
+})
+if(task !=null) {
+
+task.setTaskSelected(this.state.isTaskSelected);
+
+}
+
+       }
+
 
        
    
@@ -104,7 +122,8 @@ public makeTaskActive= (event : any) => {
             <i className="fa fa-star-o starred"/>
         </div>
         <div className="new-content">
-        <CreateNewTask  activeId = {this.props.activeId} makeTaskActive = {this.makeTaskActive}/>
+        <CreateNewTask  activeId = {this.props.activeId} makeTaskActive = {this.makeTaskActive}
+        makeImportant= {this.makeImportant}/>
         
          </div>
         <div className={"add-task" + (this.state.isSelected ? " display-none" : "")} onClick = {this.showInputFormToAddTask} >
