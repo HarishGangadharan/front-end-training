@@ -1,18 +1,32 @@
 import * as React from 'react';
-import './style.css';
+import './components/style.css';
 
-import MainContent from './MainContent';
-import TopNav from './TopNav';
+import { createStore } from 'redux'
 
+import { Provider } from 'react-redux';
+
+
+import MainContent from './components/MainContent';
+import rootReducer from './reducers/todo'
+
+import TopNav from './components/TopNav';
+
+
+const storeTree = createStore(rootReducer);
 
 class App extends React.Component {
+
  public render() {
+
    return (
+     <Provider store = {storeTree}>
      <div className="App">
      <TopNav/>
 
-     <MainContent/>
+     <MainContent />
      </div>
+     </Provider>
+
    );
  }
 }
