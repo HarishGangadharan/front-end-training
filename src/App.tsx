@@ -1,8 +1,8 @@
 import * as React from 'react';
-import './style.css';
+import './components/style.css';
 
-import MainContent from './MainContent';
-import TopNav from './TopNav';
+import MainContent from './components/MainContent';
+import TopNav from './components/TopNav';
 
 
 class App extends React.Component {
